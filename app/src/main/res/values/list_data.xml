@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="dashboard_list">
+        <item>Live Match</item>
+        <item>Schedule</item>
+        <item>Play</item>
+        <item>Challenges</item>
+        <item>Rules</item>
+        <item>My Profile</item>
+        <item>About Us</item>
+    </string-array>
+</resources>
