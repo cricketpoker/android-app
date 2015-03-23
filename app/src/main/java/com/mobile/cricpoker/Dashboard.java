@@ -1,9 +1,8 @@
 package com.mobile.cricpoker;
 
-import android.app.ListActivity;
 import android.content.Intent;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,7 +13,7 @@ import android.widget.ListView;
 import java.util.ArrayList;
 
 
-public class Dashboard extends ActionBarActivity {
+public class Dashboard extends ActionBarActivity implements AdapterView.OnItemClickListener {
 
     Class[] activityClass = {Match.class, Schedule.class, Play.class, Challenges.class, Rules.class, Profile.class, About.class};
     ListView dashboardListView;
@@ -28,22 +27,15 @@ public class Dashboard extends ActionBarActivity {
         String[] dashboard_items = getResources().getStringArray(R.array.dashboard_list);
 //        this.setListAdapter(new ArrayAdapter<String>(this, R.layout.dashboard_list, R.id.label, dashboard_items));
 
+        for(String s: dashboard_items)
+            mDashboardList.add(s);
         dashboardListView = (ListView) findViewById(R.id.dashboard_listview);
         mArrayAdapter = new ArrayAdapter(this,
                 android.R.layout.simple_list_item_1,
                 mDashboardList);
         dashboardListView.setAdapter(mArrayAdapter);
-        for(String s: dashboard_items)
-            mDashboardList.add(s);
 
-//        ListView dashboard_list = getListView();
-        dashboardListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(getApplicationContext(), activityClass[position]);
-                startActivity(intent);
-            }
-        });
+        dashboardListView.setOnItemClickListener(this);
     }
 
 
@@ -67,5 +59,11 @@ public class Dashboard extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        Intent intent = new Intent(getApplicationContext(), activityClass[position]);
+        startActivity(intent);
     }
 }
