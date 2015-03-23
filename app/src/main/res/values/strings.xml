@@ -12,4 +12,5 @@
     <string name="title_activity_match">Match</string>
     <string name="title_activity_profile">Profile</string>
     <string name="facebook_app_id">946500115360093</string>
+    <string name="title_activity_login">Login</string>
 </resources>
